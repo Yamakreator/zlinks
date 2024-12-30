@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Link Zulfikar</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-image: url('raiden.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.5);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding-top: 2rem;
+        }
+
+        .welcome-text {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #9400d3, #03d1ff, #9400d3);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(148, 0, 211, 0.3);
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid #800080;
+        }
+
+        .fade-in {
+            opacity: 1 !important;
+        }
+
+        .typing-animation {
+            animation: typing 2s steps(20, end), blink-caret 0.75s step-end infinite;
+        }
+
+        .float-animation {
+            animation: shine 3s linear infinite, float 3s ease-in-out infinite;
+            border-right: none;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #800080 }
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0px);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid #800080;
+            margin: 0 auto 1rem;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(148, 0, 211, 0.7);
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(148, 0, 211, 0.7);
+            color: #e0e0ff;
+        }
+
+        .profile p {
+            font-size: 1rem;
+            opacity: 0.9;
+            text-shadow: 0 0 10px rgba(148, 0, 211, 0.7);
+            color: #d8d8ff;
+        }
+
+        .links {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 0 1rem;
+        }
+
+        .link {
+            background: rgba(148, 0, 211, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-origin: center;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 60px;
+            font-weight: 600;
+            box-shadow: 0 0 15px rgba(148, 0, 211, 0.3);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, background 0.3s ease;
+            padding-left: 80px;
+        }
+
+        .link img {
+            position: absolute;
+            left: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .link::before {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                transparent 0%,
+                rgba(148, 0, 211, 0.3) 50%,
+                transparent 100%
+            );
+            top: 0;
+            left: -100%;
+            transform: skewX(-25deg);
+            animation: shine-effect 3s infinite;
+        }
+
+        .link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #800080;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .link .left-border {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: #800080;
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+            transform-origin: top;
+        }
+
+        .link:hover .left-border {
+            transform: scaleY(1);
+        }
+
+        @keyframes shine-effect {
+            from {
+                left: -100%;
+            }
+            to {
+                left: 200%;
+            }
+        }
+
+        .link:hover {
+            transform: scale(1.05) translateY(-5px);
+            background: rgba(148, 0, 211, 0.3);
+            box-shadow: 0 10px 20px rgba(148, 0, 211, 0.4);
+            color: white;
+        }
+
+        .link:hover::after {
+            transform: scaleX(1);
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            background: rgba(148, 0, 211, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 0 1rem;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        @media (min-width: 640px) {
+            .links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .welcome-text {
+                font-size: 1.5rem;
+            }
+            
+            .profile h1 {
+                font-size: 1.5rem;
+            }
+
+            .profile p {
+                font-size: 0.9rem;
+            }
+            
+            .links {
+                grid-template-columns: 1fr;
+            }
+        }
+
+         /* Tambahkan style berikut di bagian CSS */
+
+.link {
+    /* Style yang sudah ada tetap dipertahankan */
+    background: rgba(255, 255, 255, 0.2);
+    padding: 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-origin: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 60px;
+    font-weight: 600;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, background 0.3s ease;
+    padding-left: 80px;
+
+    /* Tambahkan properti baru untuk efek gradient */
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.link span {
+    background: linear-gradient(45deg, #e102f5, #00fbff, #d300e2);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 3s linear infinite;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="container">
+            <div class="welcome-text">Welcome to My Website Links!</div>
+            
+            <div class="profile">
+                <div class="profile-img">
+                    <img src="z.jpg" alt="Profile">
+                </div>
+                <h1>Zulfika Aziz Saripudin</h1>
+                <p>Wellcome to My Website Links</p>
+            </div>
+
+            <div class="links">
+                <a href="https://wa.me/62895384547109" class="link">
+                    <img src="s.jpg" alt="WhatsApp">
+                    <span class="left-border"></span>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="https://www.youtube.com/@IzulStory" class="link">
+                    <img src="s2.jpg" alt="Youtube">
+                    <span class="left-border"></span>
+                    <span>Youtube</span>
+                </a>
+                <a href="https://www.instagram.com/sate_air/profilecard/?igsh=MTFyeGloa2Qzang5cQ==" class="link">
+                    <img src="s3.jpg" alt="Instagram">
+                    <span class="left-border"></span>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://x.com/SuouYama?t=Or8NwDQldUZEG6oagJ2LTw&s=09" class="link">
+                    <img src="s4.jpg" alt="x">
+                    <span class="left-border"></span>
+                    <span>x</span>
+                </a>
+                <a href="https://drive.google.com/drive/folders/14XaTouLJ8y5wNyWsGsoj5HU-v_1Yyumd" class="link">
+                    <img src="s6.jpg" alt="PDF">
+                    <span class="left-border"></span>
+                    <span>Akses PDF Nihongo</span>
+                </a>
+                <a href="https://tiktok.com/@otodidakbahasajepang" class="link">
+                    <img src="s10.jpg" alt="Let's Talk">
+                    <span class="left-border"></span>
+                    <span>Tiktok</span>
+                </a>
+            </div>
+
+            <footer>
+                © 2025 Zulfikar Aziz Saripudin
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    if (entry.target.classList.contains('link')) {
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                } else {
+                    entry.target.classList.remove('fade-in');
+                    if (entry.target.classList.contains('link')) {
+                        entry.target.style.transform = 'translateY(20px)';
+                    }
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px'
+        });
+
+        document.querySelector('.welcome-text').style.opacity = '0';
+        document.querySelector('.profile').style.opacity = '0';
+        document.querySelector('footer').style.opacity = '0';
+
+        observer.observe(document.querySelector('.welcome-text'));
+        observer.observe(document.querySelector('.profile'));
+        observer.observe(document.querySelector('footer'));
+
+        document.querySelectorAll('.link').forEach(link => {
+            link.style.opacity = '0';
+            observer.observe(link);
+        });
+
+        const welcomeText = document.querySelector('.welcome-text');
+        welcomeText.classList.add('typing-animation');
+
+        setTimeout(() => {
+            welcomeText.classList.remove('typing-animation');
+            welcomeText.classList.add('float-animation');
+        }, 2000);
+    </script>
+</body>
+</html>
